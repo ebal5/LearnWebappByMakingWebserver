@@ -1,13 +1,15 @@
+package bbs;
+
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Message {
     public static ArrayList<Message> messageList = new ArrayList<Message>();
 
-    String title;
-    String handle;
-    String message;
-    Date date;
+    public String title;
+    public String handle;
+    public String message;
+    public Date date;
 
     public Message(String title, String handle, String message) {
         this.title = title;

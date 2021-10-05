@@ -1,3 +1,5 @@
+package bbs;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -14,6 +16,6 @@ public class PostBBS extends HttpServlet {
         Message.messageList.add(0, newMessage);
         System.out.println("Got Message from: " + newMessage.title);
 
-        resp.sendRedirect("/testbbs/ShowBBS");
+        resp.sendRedirect("/testbbs_jsp/showbbs.jsp");
     }
 }
