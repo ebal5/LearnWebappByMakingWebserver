@@ -7,7 +7,7 @@ services:
       - 8080:80
     volumes: 
       - type: bind
-        source: "../websrc"
+        source: "../ch03/websrc"
         target: "/usr/local/apache2/htdocs"
   java:
     image: mcr.microsoft.com/vscode/devcontainers/java:0-16
@@ -24,5 +24,5 @@ services:
       - 8888:8080
     volumes:
       - type: bind
-        source: "../tomcat"
+        source: "../ch03/tomcat"
         target: "/usr/local/tomcat/webapps"

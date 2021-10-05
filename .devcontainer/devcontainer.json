@@ -39,7 +39,6 @@
 	"service": "java",
 	"workspaceFolder": "/workspace",
 	"settings": {},
-	// "postCreateCommand": "composer install",
 	"extensions": [
 		"ms-azuretools.vscode-docker"
 	],
