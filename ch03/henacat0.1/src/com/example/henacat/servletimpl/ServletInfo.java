@@ -1,5 +1,7 @@
 package com.example.henacat.servletimpl;
 
+import com.example.henacat.servlet.http.HttpServlet;
+
 public class ServletInfo {
     WebApplication webApp;
     String urlPattern;

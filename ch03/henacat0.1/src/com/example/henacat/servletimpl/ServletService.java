@@ -6,6 +6,12 @@ import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.example.henacat.servlet.http.HttpServlet;
+import com.example.henacat.servlet.http.HttpServletRequest;
+import com.example.henacat.servlet.http.HttpServletResponse;
+import com.example.henacat.util.Constants;
+import com.example.henacat.util.SendResponse;
+
 public class ServletService {
     private static HttpServlet createServlet(ServletInfo info) throws Exception {
         Class<?> clazz = info.webApp.classLoader.loadClass(info.servletClassName);
@@ -86,7 +92,7 @@ public class ServletService {
             } else {
                 redirectLocation = resp.redirectLocation;
             }
-            SendResponse.sendResponse(output, redirectLocation);
+            SendResponse.sendFoundResponse(output, redirectLocation);
         }
     }
 }

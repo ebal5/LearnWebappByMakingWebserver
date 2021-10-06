@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class MyURLDecoder {
     private static int hex2int(byte b1, byte b2) {
         var digit = (b1 >= 'A') ? (b1 & 0xDF) - 'A' + 10 : b1 - '0';
-        digit *= 0x10;
+        digit *= 0x10; /* こっちのほうがわかりやすい。書籍はdigit *= 16 */
         digit += (b2 >= 'A') ? (b2 & 0xDF) - 'A' + 10 : b2 - '0';
         return digit;
     }

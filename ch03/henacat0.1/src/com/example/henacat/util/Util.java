@@ -1,5 +1,6 @@
 package com.example.henacat.util;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
@@ -28,7 +29,7 @@ public class Util {
         }
     }
 
-    public static void writeLine(OutputStream output, String str) throws Exception {
+    public static void writeLine(OutputStream output, String str) throws IOException {
         for (char ch : str.toCharArray()) {
             output.write((int) ch);
         }

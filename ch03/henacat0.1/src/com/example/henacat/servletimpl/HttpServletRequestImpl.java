@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.util.Map;
 
+import com.example.henacat.servlet.http.HttpServletRequest;
 import com.example.henacat.util.MyURLDecoder;
 
 public class HttpServletRequestImpl implements HttpServletRequest {

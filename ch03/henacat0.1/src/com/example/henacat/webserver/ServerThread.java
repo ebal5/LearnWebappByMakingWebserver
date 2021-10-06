@@ -13,9 +13,11 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.example.henacat.servletimpl.ServletService;
 import com.example.henacat.servletimpl.WebApplication;
-
+import com.example.henacat.util.Constants;
 import com.example.henacat.util.MyURLDecoder;
+import com.example.henacat.util.SendResponse;
 import com.example.henacat.util.Util;
 
 public class ServerThread implements Runnable {
@@ -40,8 +42,8 @@ public class ServerThread implements Runnable {
             InputStream input = socket.getInputStream();
 
             String line;
-            String requestLine;
-            String method;
+            String requestLine = null;
+            String method = null;
             var reqHeader = new HashMap<String, String>();
             while ((line = Util.readLine(input)) != null) {
                 if (line == "")
@@ -83,6 +85,7 @@ public class ServerThread implements Runnable {
 
             String ext = null;
             var tmp = reqUri.split("\\.");
+            ext = tmp[tmp.length - 1];
 
             if (path.endsWith("/")) {
                 path += "index.html";
