@@ -10,7 +10,6 @@ import com.example.henacat.servlet.http.HttpServletResponse;
 public class ShowBBS extends HttpServlet {
 
     private String escapeHtml(String src) {
-
         return src.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace("\"", "&quot;").replace("'",
                 "&#39;");
     }
@@ -28,13 +27,19 @@ public class ShowBBS extends HttpServlet {
         out.println("<h1>テスト掲示板</h1>");
         out.println("<form action='/testbbs/PostBBS' method='post'>");
         out.println("タイトル: <input type='text' name='title' size='60'><br>");
-        out.println("ハンドル名: <input type='text' name='title' size='60'><br>");
+        out.println("ハンドル名: <input type='text' name='handle' size='60'><br>");
         out.println("<textarea name='message' rows='4' cols='60'></textarea></br>");
         out.println("<input type='submit'>");
         out.println("</form>");
         out.println("<hr>");
 
         Message.messageList.forEach((message) -> {
+            // synchronized (System.out) {
+            // System.out.println("message: " + message);
+            // System.out.println("title: " + message.title);
+            // System.out.println("handle: " + message.handle);
+            // System.out.println("text: " + message.message);
+            // }
             out.println("<p>『" + escapeHtml(message.title) + "』&nbsp;&nbsp;" + escapeHtml(message.handle)
                     + " さん&nbsp;&nbsp;" + escapeHtml(message.date.toString()) + "</p>");
             out.println("<p>");
