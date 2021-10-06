@@ -42,7 +42,9 @@
 	"extensions": [
 		"ms-azuretools.vscode-docker",
 		"kahole.magit",
-		"vscjava.vscode-java-pack"
+		"vscjava.vscode-java-pack",
+		"ms-vscode.brackets-pack",
+		"formulahendry.auto-complete-tag"
 	],
 	"mounts": [
 		"source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"

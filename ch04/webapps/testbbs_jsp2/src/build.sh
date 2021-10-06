@@ -1,0 +1,1 @@
+javac -d ../WEB-INF/classes/ -cp /usr/local/tomcat/lib/servlet-api.jar *.java
