@@ -1,11 +1,11 @@
 version: "3.9"
 
 x-chap: &CHAPTER_DIRECTORY 
-  "../ch03"
+  "../ch04"
 x-htdocs: &HTDOCS_DIR
-  "../ch03/htdocs"
+  "../ch04/htdocs"
 x-webapps: &WEBAPPS_DIR
-  "../ch03/webapps"
+  "../ch04/webapps"
 
 services:
   server:
