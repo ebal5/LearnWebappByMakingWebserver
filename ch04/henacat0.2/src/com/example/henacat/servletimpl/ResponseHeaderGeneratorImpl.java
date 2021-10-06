@@ -28,7 +28,6 @@ public class ResponseHeaderGeneratorImpl implements ResponseHeaderGenerator {
     public void generate(OutputStream output) throws IOException {
         for (var cookie : cookies) {
             String header;
-            System.out.println("cookie: " + cookie.getName() + "/" + cookie.getValue());
             header = "Set-Cookie: " + cookie.getName() + "=" + cookie.getValue();
             header += asCookieString("Domain", cookie.getDomain(), false);
             if (cookie.getMaxAge() > 0) {

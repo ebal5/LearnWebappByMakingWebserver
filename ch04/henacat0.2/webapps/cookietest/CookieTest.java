@@ -18,8 +18,6 @@ public class CookieTest extends HttpServlet {
         } else {
             out.println("cookies.length.." + cookies.length);
             for (var cookie : cookies) {
-                System.out.println("cookie in req: " + cookie.getName() + "/" + cookie.getValue());
-
                 out.println("cookie: " + cookie.getName() + "/" + cookie.getValue());
                 if (cookie.getName().equals("COUNTER")) {
                     counterStr = cookie.getValue();
