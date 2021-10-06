@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class WebApplication {
-    private static String WEBAPPS_DIR = "/workspace/ch03/henacat0.1/webapps";
+    private static String WEBAPPS_DIR = "/workspace/ch04/henacat0.2/webapps";
     private static Map<String, WebApplication> webAppCollection = new HashMap<String, WebApplication>();
     String directory;
     ClassLoader classLoader;

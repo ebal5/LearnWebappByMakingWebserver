@@ -64,12 +64,12 @@ public class ServletService {
         HttpServletRequest req;
         if (method.equals("GET")) {
             var map = stringToMap(query);
-            req = new HttpServletRequestImpl("GET", map);
+            req = new HttpServletRequestImpl("GET", reqHeader, map);
         } else if (method.equals("POST")) {
             var contentLength = Integer.parseInt(reqHeader.get("CONTENT-LENGTH"));
             var line = readToSize(input, contentLength);
             var map = stringToMap(line);
-            req = new HttpServletRequestImpl("POST", map);
+            req = new HttpServletRequestImpl("POST", reqHeader, map);
         } else {
             // GET POST 以外は非対応
             throw new AssertionError("BAD METHOD: " + method);
@@ -78,7 +78,8 @@ public class ServletService {
         info.servlet.service(req, resp);
 
         if (resp.status == HttpServletResponse.SC_OK) {
-            SendResponse.sendOkResponseHeader(output, resp.contentType);
+            var hq = new ResponseHeaderGeneratorImpl(resp.cookies);
+            SendResponse.sendOkResponseHeader(output, resp.contentType, hq);
             resp.printWriter.flush();
             var outputBytes = outputBuffer.toByteArray();
             for (var b : outputBytes) {

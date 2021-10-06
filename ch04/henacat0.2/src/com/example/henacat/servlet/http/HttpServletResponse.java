@@ -16,4 +16,6 @@ public interface HttpServletResponse {
     void sendRedirect(String location);
 
     void setStatus(int sc);
+
+    void addCookie(Cookie cookie);
 }

@@ -15,7 +15,7 @@ public class SendResponse {
         }
         Util.writeLine(output, "HTTP/1.1 404 Not Found");
         Util.writeLine(output, "Date: " + Util.getDateStringUtc());
-        Util.writeLine(output, "Server: Henacat/0.1");
+        Util.writeLine(output, "Server: Henacat/0.2");
         Util.writeLine(output, "Connection: close");
         Util.writeLine(output, "Content-Type: text/html");
         Util.writeLine(output, "");
@@ -30,7 +30,7 @@ public class SendResponse {
     public static void sendMovePermanentlyResponse(OutputStream output, String location) throws Exception {
         Util.writeLine(output, "HTTP/1.1 301 Moved Permanently");
         Util.writeLine(output, "Date: " + Util.getDateStringUtc());
-        Util.writeLine(output, "Server: Henacat/0.1");
+        Util.writeLine(output, "Server: Henacat/0.2");
         Util.writeLine(output, "Connection: close");
         Util.writeLine(output, "Location: " + location);
         Util.writeLine(output, "");
@@ -39,7 +39,7 @@ public class SendResponse {
     public static void sendFoundResponse(OutputStream output, String location) throws Exception {
         Util.writeLine(output, "HTTP/1.1 302 Found");
         Util.writeLine(output, "Date: " + Util.getDateStringUtc());
-        Util.writeLine(output, "Server: Henacat/0.1");
+        Util.writeLine(output, "Server: Henacat/0.2");
         Util.writeLine(output, "Connection: close");
         Util.writeLine(output, "Location: " + location);
         Util.writeLine(output, "");
@@ -52,7 +52,7 @@ public class SendResponse {
         }
         Util.writeLine(output, "HTTP/1.1 200 OK");
         Util.writeLine(output, "Date: " + Util.getDateStringUtc());
-        Util.writeLine(output, "Server: Henacat/0.1");
+        Util.writeLine(output, "Server: Henacat/0.2");
         Util.writeLine(output, "Connection: close");
         Util.writeLine(output, "Content-Type: " + Util.getContentType(ext));
         Util.writeLine(output, "");
@@ -63,12 +63,14 @@ public class SendResponse {
         }
     }
 
-    public static void sendOkResponseHeader(OutputStream output, String contentType) throws IOException {
+    public static void sendOkResponseHeader(OutputStream output, String contentType, ResponseHeaderGenerator hg)
+            throws IOException {
         Util.writeLine(output, "HTTP/1.1 200 OK");
         Util.writeLine(output, "Date: " + Util.getDateStringUtc());
-        Util.writeLine(output, "Server: Henacat/0.1");
+        Util.writeLine(output, "Server: Henacat/0.2");
         Util.writeLine(output, "Connection: close");
         Util.writeLine(output, "Content-Type: " + contentType);
+        hg.generate(output);
         Util.writeLine(output, "");
     }
 }

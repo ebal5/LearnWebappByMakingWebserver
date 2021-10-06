@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
+import com.example.henacat.servlet.http.Cookie;
 import com.example.henacat.servlet.http.HttpServletResponse;
 
 public class HttpServletResponseImpl implements HttpServletResponse {
@@ -14,6 +16,7 @@ public class HttpServletResponseImpl implements HttpServletResponse {
     PrintWriter printWriter;
     int status;
     String redirectLocation;
+    ArrayList<Cookie> cookies = new ArrayList<Cookie>();
 
     @Override
     public void setContentType(String contentType) {
@@ -47,6 +50,11 @@ public class HttpServletResponseImpl implements HttpServletResponse {
     @Override
     public void setStatus(int sc) {
         this.status = sc;
+    }
+
+    @Override
+    public void addCookie(Cookie cookie) {
+        this.cookies.add(cookie);
     }
 
     public HttpServletResponseImpl(OutputStream output) {
