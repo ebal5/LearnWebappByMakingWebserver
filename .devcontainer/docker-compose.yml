@@ -19,7 +19,10 @@ services:
     environment: 
       - TZ=Asia/Tokyo
   java:
-    image: mcr.microsoft.com/vscode/devcontainers/java:0-16
+    # image: mcr.microsoft.com/vscode/devcontainers/java:0-16
+    build:
+      context: .
+      dockerfile: ./Dockerfile.java
     ports:
       - 8001:8001
     volumes:
@@ -30,7 +33,7 @@ services:
     environment: 
       - TZ=Asia/Tokyo
   tomcat:
-    image: tomcat:9.0
+    image: tomcat:9-jdk16-corretto
     ports:
       - 8888:8080
     volumes:
