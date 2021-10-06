@@ -1,1 +1,1 @@
-javac -d ../bin $(find . -t f -name "*.java")
+javac -d ../bin $(find . -type f -name "*.java")
