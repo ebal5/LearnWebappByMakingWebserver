@@ -1,5 +1,12 @@
 version: "3.9"
 
+x-chap: &CHAPTER_DIRECTORY 
+  "../ch03"
+x-htdocs: &HTDOCS_DIR
+  "../ch03/htdocs"
+x-webapps: &WEBAPPS_DIR
+  "../ch03/webapps"
+
 services:
   server:
     image: httpd:2.4
@@ -7,10 +14,15 @@ services:
       - 8080:80
     volumes: 
       - type: bind
-        source: "../websrc"
+        source: *HTDOCS_DIR
         target: "/usr/local/apache2/htdocs"
+    environment: 
+      - TZ=Asia/Tokyo
   java:
-    image: mcr.microsoft.com/vscode/devcontainers/java:0-16
+    # image: mcr.microsoft.com/vscode/devcontainers/java:0-16
+    build:
+      context: .
+      dockerfile: ./Dockerfile.java
     ports:
       - 8001:8001
     volumes:
@@ -18,11 +30,15 @@ services:
         source: "../"
         target: "/workspace"
     tty: true
+    environment: 
+      - TZ=Asia/Tokyo
   tomcat:
-    image: tomcat:9.0
+    image: tomcat:9-jdk16-corretto
     ports:
       - 8888:8080
     volumes:
       - type: bind
-        source: "../tomcat"
+        source: *WEBAPPS_DIR
         target: "/usr/local/tomcat/webapps"
+    environment: 
+      - TZ=Asia/Tokyo

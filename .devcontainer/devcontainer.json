@@ -39,9 +39,10 @@
 	"service": "java",
 	"workspaceFolder": "/workspace",
 	"settings": {},
-	// "postCreateCommand": "composer install",
 	"extensions": [
-		"ms-azuretools.vscode-docker"
+		"ms-azuretools.vscode-docker",
+		"kahole.magit",
+		"vscjava.vscode-java-pack"
 	],
 	"mounts": [
 		"source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"

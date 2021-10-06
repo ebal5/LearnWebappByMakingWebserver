@@ -1,1 +1,0 @@
-javac -d ../WEB-INF/classes -cp ${CATALINA_HOME}/lib/servlet-api.jar *.java
