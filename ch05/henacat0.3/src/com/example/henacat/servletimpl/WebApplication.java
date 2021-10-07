@@ -9,11 +9,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class WebApplication {
-    private static String WEBAPPS_DIR = "/workspace/ch04/henacat0.2/webapps";
+    private static String WEBAPPS_DIR = "/workspace/ch05/henacat0.3/webapps";
     private static Map<String, WebApplication> webAppCollection = new HashMap<String, WebApplication>();
     String directory;
     ClassLoader classLoader;
     private Map<String, ServletInfo> servletCollection = new HashMap<String, ServletInfo>();
+    private SessionManager sessionManager;
 
     private WebApplication(String dir) throws MalformedURLException {
         this.directory = dir;
@@ -40,4 +41,10 @@ public class WebApplication {
         return servletCollection.get(path);
     }
 
+    public SessionManager getSessionManager() {
+        if (this.sessionManager == null) {
+            this.sessionManager = new SessionManager();
+        }
+        return this.sessionManager;
+    }
 }
