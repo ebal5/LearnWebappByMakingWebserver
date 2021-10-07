@@ -1,6 +1,7 @@
 package com.example.henacat.servlet.http;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Collection;
 
 public interface HttpServletRequest {
     String getMethod();
@@ -16,4 +17,8 @@ public interface HttpServletRequest {
     HttpSession getSession();
 
     HttpSession getSession(boolean create);
+
+    Part getPart(String name);
+
+    Collection<Part> getParts();
 }
