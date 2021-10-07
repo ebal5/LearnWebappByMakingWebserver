@@ -47,7 +47,8 @@
 		"formulahendry.auto-complete-tag"
 	],
 	"mounts": [
-		"source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"
+		"source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind",
+		"source=~/.ssh/known_hosts,taraget=~/.ssh/known_hosts,type=bind"
 	],
 	"runArgs": [
 		"--init"
