@@ -26,7 +26,7 @@ public class ShowBBS extends HttpServlet {
         out.println("</head>");
         out.println("<body>");
         out.println("<h1>テスト掲示板</h1>");
-        out.println("<form action='/testbbs/PostBBS' method='post'>");
+        out.println("<form action='/testbbsauth/PostBBS' method='post'>");
         out.println("タイトル: <input type='text' name='title' size='60'><br>");
         out.println("ハンドル名: <input type='handle' name='title' size='60'><br>");
         out.println("<textarea name='message' rows='4' cols='60'></textarea></br>");

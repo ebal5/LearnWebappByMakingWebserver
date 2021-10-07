@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScriptによるDOM操作のテスト</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+            const reNumber = () => {
+                const elements = document.querySelector("#addElementTarget");
+                for (let [index, node] of Array.from(elements.children).entries()) {
+                    const nameNode = node.querySelector("._nameInput");
+                    nameNode.setAttribute("name", `name${index}`);
+                    nameNode.setAttribute("id", `_name${index}`);
+                    const addrNode = node.querySelector("._addressInput");
+                    addrNode.setAttribute("name", `addr${index}`);
+                    addrNode.setAttribute("id", `_addr${index}`);
+                }
+            };
+            const newLine = () => {
+                const source = document.querySelector("#addElementSource").content.cloneNode(true);
+                source.querySelector("._delButton").addEventListener("click", (event) => {
+                    event.currentTarget.parentNode.parentNode.remove();
+                    reNumber();
+                });
+                document.querySelector("#addElementTarget").appendChild(source);
+                reNumber();
+            };
+            document.querySelector("#addElementButton").addEventListener("click", (event) => {
+                newLine();
+            });
+            newLine();
+        });
+    </script>
+</head>
+
+<body>
+    <form action="dummy.cgi" method="post" onsubmit="return false;">
+        <table>
+            <thead>
+                <tr>
+                    <th size=20>氏名</th>
+                    <th size=40>住所</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td id="addElementButton" colspan="3" align="right"><button>1行追加</button></td>
+                </tr>
+            </tfoot>
+            <tbody id="addElementTarget">
+            </tbody>
+        </table>
+    </form>
+    <template id="addElementSource">
+        <tr>
+            <td><input type="text" class="_nameInput" name="" id="" size="20"></td>
+            <td><input type="text" class="_addressInput" name="" id="" size="40"></td>
+            <td><button class="_delButton">削除</button></td>
+        </tr>
+    </template>
+</body>
+
+</html>

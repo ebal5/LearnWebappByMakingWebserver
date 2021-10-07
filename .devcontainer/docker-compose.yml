@@ -1,11 +1,11 @@
 version: "3.9"
 
 x-chap: &CHAPTER_DIRECTORY 
-  "../ch05"
+  "../ch06"
 x-htdocs: &HTDOCS_DIR
-  "../ch05/htdocs"
+  "../ch06/htdocs"
 x-webapps: &WEBAPPS_DIR
-  "../ch05/webapps"
+  "../ch06/webapps"
 
 services:
   server:
@@ -40,5 +40,15 @@ services:
       - type: bind
         source: *WEBAPPS_DIR
         target: "/usr/local/tomcat/webapps"
+      - type: bind
+        source: ../ch06/tomcat-users.xml
+        target: /usr/local/tomcat/conf/tomcat-users.xml
     environment: 
+      - TZ=Asia/Tokyo
+  squid:
+    image: minimum2scp/squid:latest
+    ports:
+      - 3128:3128
+      - 3129:3129
+    environment:
       - TZ=Asia/Tokyo
