@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi part form</title>
+</head>
+
+<body>
+    <form action="http://localhost:8888/testupload/UploadTest" method="post" enctype="multipart/form-data">
+        テキストボックス: <input type="text" name="text_name" id=""><br>
+        パスワード: <input type="password" name="password_name" id=""><br>
+        <textarea name="textarea_name" id="" cols="40" rows="4"></textarea>
+        <table>
+            <tr>
+                <td>ラジオボタン: <br>
+                    <label><input type="radio" name="radio_name" id="" value="radio1">1</label>
+                    <label><input type="radio" name="radio_name" id="" value="radio2">2</label>
+                    <label><input type="radio" name="radio_name" id="" value="radio3">3</label>
+                    <label><input type="radio" name="radio_name" id="" value="radio4">4</label>
+                </td>
+            </tr>
+            <tr>
+                <td>チェックボックス: <br>
+                    <label>1<input type="checkbox" name="check_name" id="" value="check1"></label>
+                    <label>2<input type="checkbox" name="check_name" id="" value="check2"></label>
+                    <label>3<input type="checkbox" name="check_name" id="" value="check3"></label>
+                    <label>4<input type="checkbox" name="check_name" id="" value="check4"></label>
+                </td>
+            </tr>
+        </table>
+        <input type="hidden" name="hidden_name" value=hidden_value日本語>
+        ファイルアップロード: <input type="file" name="file_name" id=""><br>
+        <input type="submit" name="submit_name" id="" value="送るよ！">
+    </form>
+</body>
+
+</html>

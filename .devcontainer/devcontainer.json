@@ -44,7 +44,8 @@
 		"kahole.magit",
 		"vscjava.vscode-java-pack",
 		"ms-vscode.brackets-pack",
-		"formulahendry.auto-complete-tag"
+		"formulahendry.auto-complete-tag",
+		"dotdevru.prettier-java"
 	],
 	"mounts": [
 		"source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind",
