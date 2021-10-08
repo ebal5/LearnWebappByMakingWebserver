@@ -66,10 +66,15 @@ public class ServletService {
             var map = stringToMap(query);
             req = new HttpServletRequestImpl("GET", reqHeader, map, resp, info.webApp);
         } else if (method.equals("POST")) {
+            var contentType = reqHeader.get("CONTENT-TYPE");
             var contentLength = Integer.parseInt(reqHeader.get("CONTENT-LENGTH"));
-            var line = readToSize(input, contentLength);
-            var map = stringToMap(line);
-            req = new HttpServletRequestImpl("POST", reqHeader, map, resp, info.webApp);
+            if (contentType.toUpperCase().startsWith("MULTIPART/FORM-DATA")) {
+                req = MultiPartParser.parse(reqHeader, input, contentType, contentLength, resp, info.webApp);
+            } else {
+                var line = readToSize(input, contentLength);
+                var map = stringToMap(line);
+                req = new HttpServletRequestImpl("POST", reqHeader, map, resp, info.webApp);
+            }
         } else {
             // GET POST 以外は非対応
             throw new AssertionError("BAD METHOD: " + method);

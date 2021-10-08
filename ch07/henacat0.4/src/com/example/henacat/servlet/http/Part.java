@@ -1,5 +1,6 @@
 package com.example.henacat.servlet.http;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
 
@@ -8,7 +9,7 @@ public interface Part {
 
     InputStream getInputStream();
 
-    void write(String fileName);
+    void write(String fileName) throws IOException;
 
     String getContentType();
 
